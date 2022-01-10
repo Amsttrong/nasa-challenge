@@ -39,12 +39,14 @@ export function HomeView() {
   const handleSolInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setState({
       ...state,
+      page: 1,
       sol: parseInt(event.currentTarget.value),
     });
   };
   const handleEarthDayInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setState({
       ...state,
+      page: 1,
       earthDay: event.currentTarget.valueAsDate,
     });
   };
@@ -104,13 +106,19 @@ export function HomeView() {
         )}
         <div>
           {state.page > 1 && (
-            <button className="next-page" onClick={() => setState((prev) => ({ ...prev, page: state.page - 1 }))}>
+            <button
+              className="pagination-icons"
+              onClick={() => setState((prev) => ({ ...prev, page: state.page - 1 }))}
+            >
               ◀
             </button>
           )}
-          {state.earthDay !== null ||
-            (state.sol !== undefined && (
-              <button className="previous-page" onClick={() => setState((prev) => ({ ...prev, page: state.page + 1 }))}>
+          {state.sol !== undefined ||
+            (state.earthDay !== null && (
+              <button
+                className="pagination-icons"
+                onClick={() => setState((prev) => ({ ...prev, page: state.page + 1 }))}
+              >
                 ▶
               </button>
             ))}
