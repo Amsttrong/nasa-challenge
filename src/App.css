@@ -1,38 +1,70 @@
-.App {
-  text-align: center;
+@import url("./styles/navbar.css");
+@import url("./styles/buttons.css");
+@import url("./styles/sidebar.css");
+@import url("./styles/image-container.css");
+@import url("./styles/tabs.css");
+
+:root {
+  --black: #0f171f;
+  --dark: #1c2938;
+  --light-dark: #2d435c;
+  --primary: #ffba42;
+  --grey: #4a5057;
+  --danger: #ff5b42;
+  --success: #42ffa7;
+  --warning: #ff8a42;
+  --white: #f1f2f3;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  font-family: "Nunito", sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+ul {
+  list-style-type: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+a {
+  text-decoration: none;
+  color: var(--secondary);
+}
+
+body {
+  background-color: var(--black);
+  min-height: 100em;
+}
+
+div.container {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1;
+}
+
+div.main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 2.7em;
+  flex: 1 1;
+  background-color: var(--black);
 }
 
-.App-link {
-  color: #61dafb;
+div.main-photos {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1;
+  flex-wrap: wrap;
+  padding-left: 5em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input[type="date"] {
+  min-width: 8em;
+  padding: 0.5em;
+  border-radius: 1em;
+}
+
+input[type="number"] {
+  width: 7em;
+  padding: 0.5em;
+  border-radius: 1em;
 }

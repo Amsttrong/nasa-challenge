@@ -1,0 +1,10 @@
+.image-container {
+  display: flex;
+  flex-direction: row;
+  padding: 1em 1em;
+}
+
+.image-container > img {
+  max-height: 15em;
+  max-width: 15em;
+}

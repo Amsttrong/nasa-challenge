@@ -1,0 +1,13 @@
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-dark);
+  color: var(--white);
+  border-bottom: 1px solid var(--grey);
+}
+
+nav img {
+  width: 7em;
+  padding-left: 17em;
+}

@@ -1,0 +1,30 @@
+div.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+div > button {
+  margin: 1.5em 0.5em;
+  transition: color 0.2s ease-out;
+}
+
+div > button:hover {
+  color: var(--primary);
+}
+
+button.tabs {
+  color: var(--white);
+  padding: 0.2em 0.5em;
+  cursor: pointer;
+  border-radius: 1.5em;
+  font-size: 0.9em;
+  font-weight: bold;
+  background: var(--grey);
+  border: 5px solid var(--light-dark);
+}
+
+button.tabs.active {
+  background-color: var(--light-dark);
+  border-bottom-color: var(--primary);
+}
