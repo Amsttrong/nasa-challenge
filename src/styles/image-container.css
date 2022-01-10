@@ -1,13 +1,31 @@
-.image-container {
+div.main-photos {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-left: 5em;
+}
+
+.grid {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   padding: 1em 1em;
 }
 
-.image-container > img {
+.grid-images {
+  padding: 1em 1em;
+}
+
+.grid-images > img {
   min-width: 15em;
   min-height: 100%;
   max-height: 15em;
   max-width: 15em;
   object-fit: cover;
+}
+
+.paginators {
+  display: flex;
+  justify-content: center;
+  padding-right: 5em;
 }

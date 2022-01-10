@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import { getPhotos, RoverPhotosDTO } from "../api/rovers-photos";
 
+const PHOTOS_PER_PAGE = 25;
+
 type RoverPhotosProps = {
   rover: string;
   camera?: string;
   sol?: number;
   earthDay: Date | null;
-  page?: number;
 };
 
-export function RoverPhotos({ rover, camera, sol, earthDay, page }: RoverPhotosProps) {
+export function RoverPhotos({ rover, camera, sol, earthDay }: RoverPhotosProps) {
   const [photos, setPhotos] = useState<RoverPhotosDTO | undefined>();
+  const [page, setPage] = useState(1);
+  const isFirstPage = page === 1;
+  const isLastPage = photos !== undefined && photos.photos.length < PHOTOS_PER_PAGE;
 
   useEffect(() => {
     getPhotos(rover, {
@@ -23,11 +27,25 @@ export function RoverPhotos({ rover, camera, sol, earthDay, page }: RoverPhotosP
 
   return (
     <div className="main-photos">
-      {photos?.photos.map((photo) => (
-        <div className="image-container">
-          <img src={photo.img_src} alt="Mars" />
-        </div>
-      ))}
+      <div className="paginators">
+        {!isFirstPage && (
+          <button className="pagination-icons" onClick={() => setPage((prev) => prev - 1)}>
+            ◀
+          </button>
+        )}
+        {!isLastPage && (
+          <button className="pagination-icons" onClick={() => setPage((prev) => prev + 1)}>
+            ▶
+          </button>
+        )}
+      </div>
+      <div className="grid">
+        {photos?.photos.map((photo) => (
+          <div className="grid-images">
+            <img src={photo.img_src} alt="Mars" />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

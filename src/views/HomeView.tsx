@@ -14,7 +14,6 @@ type HomeViewState = {
   sol?: number;
   earthDay: Date | null;
   tab: number;
-  page: number;
 };
 
 export function HomeView() {
@@ -24,7 +23,6 @@ export function HomeView() {
     sol: 0,
     earthDay: new Date("2022-1-1"),
     tab: 1,
-    page: 1,
   });
 
   const cameras =
@@ -39,14 +37,12 @@ export function HomeView() {
   const handleSolInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setState({
       ...state,
-      page: 1,
       sol: parseInt(event.currentTarget.value),
     });
   };
   const handleEarthDayInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setState({
       ...state,
-      page: 1,
       earthDay: event.currentTarget.valueAsDate,
     });
   };
@@ -104,26 +100,7 @@ export function HomeView() {
             onChange={handleEarthDayInputChange}
           />
         )}
-        <div>
-          {state.page > 1 && (
-            <button
-              className="pagination-icons"
-              onClick={() => setState((prev) => ({ ...prev, page: state.page - 1 }))}
-            >
-              ◀
-            </button>
-          )}
-          <button className="pagination-icons" onClick={() => setState((prev) => ({ ...prev, page: state.page + 1 }))}>
-            ▶
-          </button>
-        </div>
-        <RoverPhotos
-          page={state.page}
-          rover={state.rover}
-          sol={state.sol}
-          earthDay={state.earthDay}
-          camera={state.camera}
-        />
+        <RoverPhotos rover={state.rover} sol={state.sol} earthDay={state.earthDay} camera={state.camera} />
       </div>
     </div>
   );

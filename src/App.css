@@ -49,14 +49,6 @@ div.main {
   background-color: var(--black);
 }
 
-div.main-photos {
-  display: flex;
-  flex-direction: row;
-  flex: 1 1;
-  flex-wrap: wrap;
-  padding-left: 5em;
-}
-
 input[type="date"] {
   min-width: 8em;
   padding: 0.5em;
