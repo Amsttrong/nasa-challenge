@@ -21,8 +21,8 @@ export function HomeView() {
   const [state, setState] = useState<HomeViewState>({
     rover: "Curiosity",
     camera: "FHAZ",
-    sol: 1000,
-    earthDay: null,
+    sol: 0,
+    earthDay: new Date("2022-1-1"),
     tab: 1,
     page: 1,
   });
@@ -84,12 +84,12 @@ export function HomeView() {
           tabs={[
             {
               label: "Sol",
-              onClick: () => setState((prev) => ({ ...prev, tab: 1, earthDay: null })),
+              onClick: () => setState((prev) => ({ ...prev, tab: 1, earthDay: null, sol: 0 })),
               isActive: state.tab === 1,
             },
             {
               label: "Earth Day",
-              onClick: () => setState((prev) => ({ ...prev, tab: 2, sol: undefined })),
+              onClick: () => setState((prev) => ({ ...prev, tab: 2, earthDay: new Date("2022-1-1"), sol: undefined })),
               isActive: state.tab === 2,
             },
           ]}
@@ -113,15 +113,9 @@ export function HomeView() {
               ◀
             </button>
           )}
-          {state.sol !== undefined ||
-            (state.earthDay !== null && (
-              <button
-                className="pagination-icons"
-                onClick={() => setState((prev) => ({ ...prev, page: state.page + 1 }))}
-              >
-                ▶
-              </button>
-            ))}
+          <button className="pagination-icons" onClick={() => setState((prev) => ({ ...prev, page: state.page + 1 }))}>
+            ▶
+          </button>
         </div>
         <RoverPhotos
           page={state.page}
